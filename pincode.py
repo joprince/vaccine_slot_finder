@@ -1,7 +1,7 @@
 from datetime import datetime
 from requests import get
 from const import API_WEEK_PIN, API_DAY_PIN
-from parser import find_by
+from parser import find_by, calender
 
 
 class PinCode:
@@ -49,4 +49,5 @@ class PinCode:
         """
         search_date = search_date if search_date else datetime.today().strftime('%d-%m-%Y')
         response = self.__get_api_call(api=API_WEEK_PIN, pin=pin, search_date=search_date)
+        response = calender(response=response.get("centers", []), age_limit=45)
         print(response)
