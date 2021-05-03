@@ -7,7 +7,8 @@ def find_by(response, age_limit):
     :param age_limit: Desired age limit
     :return: dictionary with centres mapped against available slots
     """
-    available = list(filter(lambda each: each.get("available_capacity") > 0 and each.get("min_age_limit") <= age_limit,
+    available = list(filter(lambda each_one:
+                            each_one.get("available_capacity") > 0 and each_one.get("min_age_limit") <= age_limit,
                             response))
     available_dict = {}
     for each in available:
